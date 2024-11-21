@@ -11,11 +11,11 @@ Explanation: Buy the stock on day 0 and sell it on day 3 => 310 – 100 = 210. B
 
 ## Approach
 
-1 . initialze the i from the first element to the last 
-2 . Now subtract the value of i-1 from i 
-3 . do it until i is not smaller than its prev or i-1 element 
-4 . as soon as it happens a new subtraction start and the previous difference is stored in res
-5 . now as the array completes the values in res gets add up and return the overall profit
+### 1 . initialze the i from the first element to the last 
+### 2 . Now subtract the value of i-1 from i 
+### 3 . do it until i is not smaller than its prev or i-1 element 
+### 4 . as soon as it happens a new subtraction start and the previous difference is stored in res
+### 5 . now as the array completes the values in res gets add up and return the overall profit
 
 
 
