@@ -74,24 +74,4 @@ This problem can be solved in a single pass through the array, maintaining two v
 
 ---
 
-## Pseudocode
-```python
-def find_second_largest(arr):
-    # Initialize variables
-    first = float('-inf')
-    sec = float('-inf')
 
-    # Edge case: If array has less than 2 elements
-    if len(arr) < 2:
-        return -1
-
-    # Iterate through the array
-    for num in arr:
-        if num > first:
-            sec = first
-            first = num
-        elif num < first and num > sec:
-            sec = num
-
-    # Check if second largest exists
-    return sec if sec != float('-inf') else -1
