@@ -81,27 +81,4 @@ To solve this problem, we will use a **two-step process** with a temporary array
 
 ---
 
-## Implementation
 
-```python
-def push_zeros_to_end(arr):
-    n = len(arr)
-    temp = [0] * n  # Create a temporary array of size n
-    j = 0  # Index for the temp array
-
-    # First pass: Add non-zero elements to temp
-    for i in range(n):
-        if arr[i] != 0:
-            temp[j] = arr[i]
-            j += 1
-
-    # Second pass: Add zeros to temp
-    while j < n:
-        temp[j] = 0
-        j += 1
-
-    # Replace original array with temp array
-    for i in range(n):
-        arr[i] = temp[i]
-
-    return arr
