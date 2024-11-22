@@ -1,45 +1,97 @@
-Given an array of positive integers arr[], return the second largest element from the array. If the second largest element doesn't exist then return -1.
+# Find the Second Largest Element in an Array
 
-Note: The second largest element should not be equal to the largest element.
+## Problem Statement
+Given an array of positive integers `arr[]`, return the **second largest element** in the array. If the second largest element doesn't exist, return `-1`.
 
-Examples:
+### Constraints:
+- **Array Size**: `2 ≤ arr.size() ≤ 10^5`
+- **Element Range**: `1 ≤ arr[i] ≤ 10^5`
 
-Input: arr[] = [12, 35, 1, 10, 34, 1]
-Output: 34
-Explanation: The largest element of the array is 35 and the second largest element is 34.
-Input: arr[] = [10, 5, 10]
-Output: 5
-Explanation: The largest element of the array is 10 and the second largest element is 5.
-Input: arr[] = [10, 10, 10]
-Output: -1
-Explanation: The largest element of the array is 10 and the second largest element does not exist.
+---
 
+## Examples
 
-Constraints:
-2 ≤ arr.size() ≤ 105
-1 ≤ arr[i] ≤ 105
+### Example 1:
+**Input**:  
+`arr = [12, 35, 1, 10, 34, 1]`  
 
+**Output**:  
+`34`  
 
-APPROACH
+**Explanation**:  
+The largest element is `35` and the second largest is `34`.
 
-Initial Setup:
+---
 
-The method uses two variables, first and sec, to track the largest and second largest numbers in the list, respectively.
-Both first and sec are initialized to negative infinity (float(-inf)), which is a way to ensure that any number in the array will be larger than these initial values during the first few iterations.
-Handling Edge Case (Length Check):
+### Example 2:
+**Input**:  
+`arr = [10, 5, 10]`  
 
-First, the function checks if the length of the array is less than 2. If the array has fewer than two elements, it immediately returns -1 because there can be no second largest number.
-Iterating Through the Array:
+**Output**:  
+`5`  
 
-The core of the logic is a single pass (linear traversal) through the array:
-For each number num in the array:
-If num is greater than first (i.e., it is larger than the current largest number), then:
-The current first becomes the new sec (second largest), and
-num becomes the new first (largest).
-If num is not greater than first, but is greater than sec and not equal to first, then:
-Update sec to num (as num is now the second largest).
-This ensures that, at the end of the loop, first holds the largest number and sec holds the second largest.
-Final Check:
+**Explanation**:  
+The largest element is `10`, and the second largest is `5`.
 
-After the loop, the function checks if sec is still set to -inf. This would imply that a second largest number was not found (perhaps because the list had identical numbers or was too short). In this case, it returns -1.
-If sec has been updated (i.e., there was a valid second largest number), it returns sec.
+---
+
+### Example 3:
+**Input**:  
+`arr = [10, 10, 10]`  
+
+**Output**:  
+`-1`  
+
+**Explanation**:  
+The largest element is `10`, but a second largest element does not exist as all elements are the same.
+
+---
+
+## Approach
+
+This problem can be solved in a single pass through the array, maintaining two variables to track the **largest** and **second largest** elements.
+
+### Steps:
+1. **Initial Setup**:
+   - Use two variables `first` and `sec` to store the largest and second largest numbers, respectively.
+   - Initialize both `first` and `sec` to negative infinity (`float('-inf')`).
+
+2. **Handle Edge Case**:
+   - If the array length is less than `2`, return `-1` as no second largest element can exist.
+
+3. **Iterate Through the Array**:
+   - For each element `num` in the array:
+     - **Case 1**: If `num > first`, update:
+       - `sec = first` (the current largest becomes the second largest).
+       - `first = num` (update the largest).
+     - **Case 2**: If `num < first` but `num > sec`:
+       - Update `sec = num` (the current number becomes the second largest).
+     - **Skip Equal Values**: If `num == first`, do nothing.
+
+4. **Final Check**:
+   - After the loop, if `sec` is still negative infinity (`float('-inf')`), it means no valid second largest element was found, so return `-1`.
+   - Otherwise, return `sec`.
+
+---
+
+## Pseudocode
+```python
+def find_second_largest(arr):
+    # Initialize variables
+    first = float('-inf')
+    sec = float('-inf')
+
+    # Edge case: If array has less than 2 elements
+    if len(arr) < 2:
+        return -1
+
+    # Iterate through the array
+    for num in arr:
+        if num > first:
+            sec = first
+            first = num
+        elif num < first and num > sec:
+            sec = num
+
+    # Check if second largest exists
+    return sec if sec != float('-inf') else -1
