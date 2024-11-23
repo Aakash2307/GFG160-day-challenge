@@ -1,26 +1,48 @@
-You are given an array of integer arr[] where each number represents a vote to a candidate. Return the candidates that have votes greater than one-third of the total votes, If there's not a majority vote, return an empty array. 
+# Majority Element (n/3)
 
-Note: The answer should be returned in an increasing format.
+## Problem Statement
 
-Examples:
+You are given an array of integers `arr[]` where each number represents a vote to a candidate. Return the candidates that have votes greater than one-third of the total votes. If no candidate receives more than one-third of the total votes, return an empty array.
 
-Input: arr[] = [2, 1, 5, 5, 5, 5, 6, 6, 6, 6, 6]
-Output: [5, 6]
-Explanation: 5 and 6 occur more n/3 times.
-Input: arr[] = [1, 2, 3, 4, 5]
-Output: []
-Explanation: no candidate occur more than n/3 times.
+### Example
+
+#### Example 1:
+**Input:**  
+`arr[] = [2, 1, 5, 5, 5, 5, 6, 6, 6, 6, 6]`  
+**Output:**  
+`[5, 6]`  
+
+**Explanation:**  
+Candidates `5` and `6` occur more than `n/3` times.
+
+---
+
+#### Example 2:
+**Input:**  
+`arr[] = [1, 2, 3, 4, 5]`  
+**Output:**  
+`[]`  
+
+**Explanation:**  
+No candidate occurs more than `n/3` times.
+
+---
+
+## Approach
+
+This problem can be solved efficiently using a **HashMap** to count the occurrences of each number. Here’s the step-by-step breakdown:
+
+1. **Initialize a Frequency Map:**  
+   Use a dictionary to store the frequency of each unique element in the array.  
+   - If the element is not present in the dictionary, initialize it with a count of `1`.
+   - If the element already exists, increment its count by `1`.
+
+2. **Find Elements Occurring More Than `n/3` Times:**  
+   Iterate through the frequency map and check if the frequency of any element is greater than `n/3`.
+
+3. **Return the Result in Ascending Order:**  
+   Collect all elements that satisfy the condition and sort them in ascending order before returning.
+
+---
 
 
-
-Approach
-
-Solved using hashmaps
-
-first make a list of the unique numbers that are occuring in the list
-
-we need to make a dict for this which we try to insert the element which does not exist if exist then increase the count by 1
-
-now make a note of the frequency of the elements 
-
-Now check which element has been occured more then n/3 times and return the number in ascending format
