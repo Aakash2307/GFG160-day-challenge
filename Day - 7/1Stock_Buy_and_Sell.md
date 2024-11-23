@@ -1,21 +1,48 @@
-The cost of stock on each day is given in an array price[]. Each day you may decide to either buy or sell the stock at price[i], you can even buy and sell the stock on the same ##day. Find the maximum profit that you can get.
+# Maximum Profit from Stock Prices
 
-Note: A stock can only be sold if it has been bought previously and multiple stocks cannot be held on any given day.
+## Problem Statement
 
-Examples:
+You are given an array `price[]` where each element represents the cost of a stock on a specific day. You may decide to buy or sell the stock on any day, but you can only sell a stock after buying it. Multiple stocks cannot be held simultaneously. Your task is to calculate the **maximum profit** you can achieve.
 
-Input: prices[] = [100, 180, 260, 310, 40, 535, 695]
-Output: 865
-Explanation: Buy the stock on day 0 and sell it on day 3 => 310 – 100 = 210. Buy the stock on day 4 and sell it on day 6 => 695 – 40 = 655. Maximum Profit = 210 + 655 = 865.
+---
 
+## Example
+
+### Example 1:
+**Input:**  
+`price[] = [100, 180, 260, 310, 40, 535, 695]`  
+**Output:**  
+`865`  
+
+**Explanation:**  
+1. Buy the stock on day 0 at price `100` and sell it on day 3 at price `310`:  
+   Profit = `310 - 100 = 210`.
+2. Buy the stock on day 4 at price `40` and sell it on day 6 at price `695`:  
+   Profit = `695 - 40 = 655`.  
+   
+**Maximum Profit:** `210 + 655 = 865`.
+
+---
 
 ## Approach
 
-### 1 . initialze the i from the first element to the last 
-### 2 . Now subtract the value of i-1 from i 
-### 3 . do it until i is not smaller than its prev or i-1 element 
-### 4 . as soon as it happens a new subtraction start and the previous difference is stored in res
-### 5 . now as the array completes the values in res gets add up and return the overall profit
+### Steps to Solve:
+1. **Initialize a Variable `profit`:**  
+   Set `profit` to `0` to keep track of the total profit.
+
+2. **Iterate Through the Prices Array:**  
+   - Start from the second day (index `1`) and compare each day’s price with the previous day’s price.
+   - If `price[i] > price[i-1]`, calculate the difference (`price[i] - price[i-1]`) and add it to `profit`.
+
+3. **Return the Total Profit:**  
+   The accumulated `profit` will give the maximum possible profit.
+
+### Key Idea:
+- You are adding the positive difference between consecutive days whenever the price increases. This approach effectively identifies all potential profits from each upward trend in prices.
+
+---
+
+
 
 
 
